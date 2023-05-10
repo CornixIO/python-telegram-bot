@@ -8,7 +8,8 @@
 import errno
 import math
 import select
-from collections import namedtuple, Mapping
+from collections import namedtuple
+from collections.abc import Mapping
 
 import time
 try:
