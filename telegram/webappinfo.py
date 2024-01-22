@@ -52,4 +52,4 @@ class WebAppInfo(TelegramObject):
                  url,
                  **kwargs):
         # Required
-        self.url: str = url
+        self.url = url
