@@ -39,14 +39,14 @@ class WebAppInfo(TelegramObject):
         url (:obj:`str`): An HTTPS URL of a Web App to be opened with additional data as specified
             in `Initializing Web Apps \
             <https://core.telegram.org/bots/webapps#initializing-mini-apps>`_.
+        **kwargs (:obj:`dict`): Arbitrary keyword arguments.
+
 
     Attributes:
         url (:obj:`str`): An HTTPS URL of a Web App to be opened with additional data as specified
             in `Initializing Web Apps \
             <https://core.telegram.org/bots/webapps#initializing-mini-apps>`_.
     """
-
-    __slots__ = ("url",)
 
     def __init__(self,
                  url,
