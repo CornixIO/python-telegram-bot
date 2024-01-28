@@ -2,3 +2,4 @@ certifi
 tornado>=5.1
 cryptography
 decorator>=4.4.0
+future==0.18.3
