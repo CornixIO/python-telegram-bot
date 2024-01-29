@@ -48,9 +48,10 @@ class KeyboardButton(TelegramObject):
 
     """
 
-    def __init__(self, text, request_contact=None, request_location=None, **kwargs):
+    def __init__(self, text, request_contact=None, request_location=None, web_app=None, **kwargs):
         # Required
         self.text = text
         # Optionals
         self.request_contact = request_contact
         self.request_location = request_location
+        self.web_app = web_app
