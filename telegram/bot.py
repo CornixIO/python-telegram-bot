@@ -3323,39 +3323,6 @@ class Bot(TelegramObject):
 
         return data
 
-    def answer_web_app_query(self, web_app_query_id, result, timeout=None, **kwargs):
-        """Use this method to set the result of an interaction with a Web App and send a
-        corresponding message on behalf of the user to the chat from which the query originated.
-
-        .. versionadded:: 20.0
-
-        Args:
-            web_app_query_id (:obj:`str`): Unique identifier for the query to be answered.
-            result (:class:`telegram.InlineQueryResult`): An object describing the message to be
-                sent.
-            timeout (:obj:`int` | :obj:`float`, optional): If this value is specified, use it as
-            the read timeout from the server (instead of the one specified during
-                creation of the connection pool).
-
-        Returns:
-            :class:`telegram.SentWebAppMessage`: On success, a sent
-            :class:`telegram.SentWebAppMessage` is returned.
-
-        Raises:
-            :class:`telegram.error.TelegramError`
-
-        """
-        result = result.to_dict()
-
-        data = {
-            "web_app_query_id": web_app_query_id,
-            "result": result,
-        }
-
-        api_result = self._request.post("answerWebAppQuery", data, timeout=timeout)
-
-        return SentWebAppMessage.de_json(api_result, self)  # type: ignore[return-value]
-
     def __reduce__(self):
         return (self.__class__, (self.token, self.base_url.replace(self.token, ''),
                                  self.base_file_url.replace(self.token, '')))
@@ -3485,5 +3452,3 @@ class Bot(TelegramObject):
     """Alias for :attr:`delete_sticker_from_set`"""
     setPassportDataErrors = set_passport_data_errors
     """Alias for :attr:`set_passport_data_errors`"""
-    answerWebAppQuery = answer_web_app_query
-    """Alias for :attr:`answer_web_app_query`"""
