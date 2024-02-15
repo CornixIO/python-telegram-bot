@@ -41,6 +41,11 @@ class InlineKeyboardButton(TelegramObject):
         callback_game (:class:`telegram.CallbackGame`): Optional. Description of the game that will
             be launched when the user presses the button.
         pay (:obj:`bool`): Optional. Specify True, to send a Pay button.
+        web_app (:obj:`telegram.WebAppInfo`): Optional. Description of the `Web App
+            <https://core.telegram.org/bots/webapps>`_  that will be launched when the user presses
+            the button. The Web App will be able to send an arbitrary message on behalf of the user
+            using the method :meth:`~telegram.Bot.answer_web_app_query`. Available only in
+            private chats between a user and the bot.
 
     Args:
         text (:obj:`str`): Label text on the button.
@@ -64,6 +69,11 @@ class InlineKeyboardButton(TelegramObject):
             the ``first`` button in the first row.
         pay (:obj:`bool`, optional): Specify True, to send a Pay button. This type of button must
             always be the ``first`` button in the first row.
+        web_app (:obj:`telegram.WebAppInfo`, optional): Description of the `Web App
+            <https://core.telegram.org/bots/webapps>`_  that will be launched when the user presses
+            the button. The Web App will be able to send an arbitrary message on behalf of the user
+            using the method :meth:`~telegram.Bot.answer_web_app_query`. Available only in
+            private chats between a user and the bot.
         **kwargs (:obj:`dict`): Arbitrary keyword arguments.
 
     """
@@ -76,6 +86,7 @@ class InlineKeyboardButton(TelegramObject):
                  switch_inline_query_current_chat=None,
                  callback_game=None,
                  pay=None,
+                 web_app=None,
                  **kwargs):
         # Required
         self.text = text
@@ -87,3 +98,4 @@ class InlineKeyboardButton(TelegramObject):
         self.switch_inline_query_current_chat = switch_inline_query_current_chat
         self.callback_game = callback_game
         self.pay = pay
+        self.web_app = web_app

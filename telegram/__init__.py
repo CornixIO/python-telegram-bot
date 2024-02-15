@@ -93,6 +93,7 @@ from .payment.labeledprice import LabeledPrice
 from .payment.shippingoption import ShippingOption
 from .payment.precheckoutquery import PreCheckoutQuery
 from .payment.shippingquery import ShippingQuery
+from .webappinfo import WebAppInfo
 from .webhookinfo import WebhookInfo
 from .games.gamehighscore import GameHighScore
 from .update import Update
@@ -148,5 +149,5 @@ __all__ = [
     'Credentials', 'DataCredentials', 'SecureData', 'FileCredentials', 'IdDocumentData',
     'PersonalDetails', 'ResidentialAddress', 'InputMediaVideo', 'InputMediaAnimation',
     'InputMediaAudio', 'InputMediaDocument', 'TelegramDecryptionError',
-    'PassportElementErrorSelfie'
+    'PassportElementErrorSelfie', 'WebAppInfo'
 ]
