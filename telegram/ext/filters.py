@@ -486,6 +486,18 @@ class Filters(object):
                         self.migrate(message) or self.pinned_message(message) or
                         self.connected_website(message))
 
+        @staticmethod
+        async def handle_my_chat_member(update, context):
+            my_chat_member = update.my_chat_member
+            if my_chat_member.new_chat_member.user.id == context.bot.id:
+                # Check if the bot was added to a channel and became an administrator
+                if my_chat_member.new_chat_member.status == "administrator":
+                    chat_id = my_chat_member.chat.id
+                    chat_title = my_chat_member.chat.title
+                    print(f"Bot added to channel: {chat_title} (ID: {chat_id})")
+                    # Optionally, you can send a message to the channel
+                    await context.bot.send_message(chat_id, "Hello! I've been added to this channel.")
+
     status_update = _StatusUpdate()
     """Subset for messages containing a status update.
 
