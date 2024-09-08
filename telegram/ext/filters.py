@@ -477,6 +477,14 @@ class Filters(object):
         connected_website = _ConnectedWebsite()
         """:obj:`Filter`: Messages that contain :attr:`telegram.Message.connected_website`."""
 
+        class _MyChatMember(BaseFilter):
+            name = 'Filters.status_update.my_chat_member'
+
+            def filter(self, message):
+                return bool(message.my_chat_member)
+
+        my_chat_member = _MyChatMember()
+
         name = 'Filters.status_update'
 
         def filter(self, message):
@@ -484,7 +492,7 @@ class Filters(object):
                         self.new_chat_title(message) or self.new_chat_photo(message) or
                         self.delete_chat_photo(message) or self.chat_created(message) or
                         self.migrate(message) or self.pinned_message(message) or
-                        self.connected_website(message))
+                        self.connected_website(message) or self.my_chat_member(message))
 
         @staticmethod
         def handle_my_chat_member(update, context):
