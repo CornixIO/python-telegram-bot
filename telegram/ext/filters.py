@@ -484,6 +484,7 @@ class Filters(object):
                 return bool(message.my_chat_member)
 
         my_chat_member = _MyChatMember()
+        """:obj:`Filter`: Messages that contain :attr:`telegram.Message.my_chat_member`."""
 
         name = 'Filters.status_update'
 
@@ -493,18 +494,6 @@ class Filters(object):
                         self.delete_chat_photo(message) or self.chat_created(message) or
                         self.migrate(message) or self.pinned_message(message) or
                         self.connected_website(message) or self.my_chat_member(message))
-
-        @staticmethod
-        def handle_my_chat_member(update, context):
-            my_chat_member = update.my_chat_member
-            if my_chat_member.new_chat_member.user.id == context.bot.id:
-                # Check if the bot was added to a channel and became an administrator
-                if my_chat_member.new_chat_member.status == "administrator":
-                    chat_id = my_chat_member.chat.id
-                    chat_title = my_chat_member.chat.title
-                    print(f"Bot added to channel: {chat_title} (ID: {chat_id})")
-                    # Optionally, you can send a message to the channel
-                    context.bot.send_message(chat_id, "Hello! I've been added to this channel.")
 
     status_update = _StatusUpdate()
     """Subset for messages containing a status update.
