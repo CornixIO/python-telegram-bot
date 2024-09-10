@@ -20,6 +20,7 @@
 
 from telegram import (Message, TelegramObject, InlineQuery, ChosenInlineResult,
                       CallbackQuery, ShippingQuery, PreCheckoutQuery)
+from telegram.chatmemberupdated import ChatMemberUpdated
 
 
 class Update(TelegramObject):
@@ -78,6 +79,8 @@ class Update(TelegramObject):
                  callback_query=None,
                  shipping_query=None,
                  pre_checkout_query=None,
+                 my_chat_member=None,
+                 chat_member=None,
                  **kwargs):
         # Required
         self.update_id = int(update_id)
@@ -91,6 +94,8 @@ class Update(TelegramObject):
         self.pre_checkout_query = pre_checkout_query
         self.channel_post = channel_post
         self.edited_channel_post = edited_channel_post
+        self.my_chat_member = my_chat_member
+        self.chat_member = chat_member
 
         self._effective_user = None
         self._effective_chat = None
@@ -130,6 +135,12 @@ class Update(TelegramObject):
 
         elif self.pre_checkout_query:
             user = self.pre_checkout_query.from_user
+
+        elif self.my_chat_member:
+            user = self.my_chat_member.from_user
+
+        elif self.chat_member:
+            user = self.chat_member.from_user
 
         self._effective_user = user
         return user
@@ -215,5 +226,7 @@ class Update(TelegramObject):
         data['pre_checkout_query'] = PreCheckoutQuery.de_json(data.get('pre_checkout_query'), bot)
         data['channel_post'] = Message.de_json(data.get('channel_post'), bot)
         data['edited_channel_post'] = Message.de_json(data.get('edited_channel_post'), bot)
+        data["my_chat_member"] = ChatMemberUpdated.de_json(data.get("my_chat_member"), bot)
+        data["chat_member"] = ChatMemberUpdated.de_json(data.get("chat_member"), bot)
 
         return cls(**data)
