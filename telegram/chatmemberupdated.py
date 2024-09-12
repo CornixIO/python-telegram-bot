@@ -115,6 +115,7 @@ class ChatMemberUpdated(TelegramObject):
         via_join_request=None,
         *,
         api_kwargs=None,
+        bot=None
     ):
         super().__init__(api_kwargs=api_kwargs)
         # Required
@@ -128,6 +129,7 @@ class ChatMemberUpdated(TelegramObject):
         # Optionals
         self.invite_link = invite_link
         self.via_join_request = via_join_request
+        self.bot = bot
 
         self._id_attrs = (
             self.chat,
@@ -155,7 +157,8 @@ class ChatMemberUpdated(TelegramObject):
         data["new_chat_member"] = ChatMember.de_json(data.get("new_chat_member"), bot)
         data["invite_link"] = ChatInviteLink.de_json(data.get("invite_link"), bot)
 
-        return super().de_json(data=data, bot=bot)
+        # return super().de_json(data=data, bot=bot)
+        return cls(bot=bot, **data)
 
     def _get_attribute_difference(self, attribute) -> Tuple[object, object]:
         try:
