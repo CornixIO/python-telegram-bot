@@ -117,7 +117,7 @@ class ChatMemberUpdated(TelegramObject):
         api_kwargs=None,
         bot=None
     ):
-        super().__init__(api_kwargs=api_kwargs)
+        # super().__init__(api_kwargs=api_kwargs)
         # Required
         self.chat = chat
         self.from_user = from_user
