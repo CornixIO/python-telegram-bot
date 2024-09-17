@@ -126,8 +126,8 @@ class ChatMemberUpdated(TelegramObject):
         self.via_chat_folder_invite_link = via_chat_folder_invite_link
 
         # Optionals
-        # self.invite_link = invite_link
-        # self.via_join_request = via_join_request
+        self.invite_link = invite_link
+        self.via_join_request = via_join_request
         self.bot = bot
 
         self._id_attrs = (
