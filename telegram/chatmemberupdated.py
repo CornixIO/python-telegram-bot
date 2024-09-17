@@ -107,28 +107,27 @@ class ChatMemberUpdated(TelegramObject):
         self,
         chat: Chat,
         from_user: User,
-        date: datetime.datetime,
-        old_chat_member: ChatMember,
-        new_chat_member: ChatMember,
-        invite_link=None,
-        via_chat_folder_invite_link=None,
-        via_join_request=None,
+        # date: datetime.datetime,
+        # old_chat_member: ChatMember,
+        # new_chat_member: ChatMember,
+        # invite_link=None,
+        # via_chat_folder_invite_link=None,
+        # via_join_request=None,
         *,
-        api_kwargs=None,
         bot=None
     ):
         # super().__init__(api_kwargs=api_kwargs)
         # Required
         self.chat = chat
         self.from_user = from_user
-        self.date = date
-        self.old_chat_member = old_chat_member
-        self.new_chat_member = new_chat_member
-        self.via_chat_folder_invite_link = via_chat_folder_invite_link
+        # self.date = date
+        # self.old_chat_member = old_chat_member
+        # self.new_chat_member = new_chat_member
+        # self.via_chat_folder_invite_link = via_chat_folder_invite_link
 
         # Optionals
-        self.invite_link = invite_link
-        self.via_join_request = via_join_request
+        # self.invite_link = invite_link
+        # self.via_join_request = via_join_request
         self.bot = bot
 
         self._id_attrs = (
@@ -152,10 +151,10 @@ class ChatMemberUpdated(TelegramObject):
 
         data["chat"] = Chat.de_json(data.get("chat"), bot)
         data["from_user"] = User.de_json(data.pop("from", None), bot)
-        data["date"] = from_timestamp(data.get("date"), tzinfo=loc_tzinfo)
-        data["old_chat_member"] = ChatMember.de_json(data.get("old_chat_member"), bot)
-        data["new_chat_member"] = ChatMember.de_json(data.get("new_chat_member"), bot)
-        data["invite_link"] = ChatInviteLink.de_json(data.get("invite_link"), bot)
+        # data["date"] = from_timestamp(data.get("date"), tzinfo=loc_tzinfo)
+        # data["old_chat_member"] = ChatMember.de_json(data.get("old_chat_member"), bot)
+        # data["new_chat_member"] = ChatMember.de_json(data.get("new_chat_member"), bot)
+        # data["invite_link"] = ChatInviteLink.de_json(data.get("invite_link"), bot)
 
         # return super().de_json(data=data, bot=bot)
         return cls(bot=bot, **data)

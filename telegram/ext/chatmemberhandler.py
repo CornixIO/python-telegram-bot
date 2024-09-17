@@ -13,4 +13,5 @@ class MyChatMemberHandler(Handler):
 
     # Handle the my_chat_member update if it matches
     def handle_update(self, update, dispatcher):
-        return self.callback(update, dispatcher)
+        return self.callback(dispatcher.bot, update)
+        # return self.callback(update, dispatcher) # Delete if the above line is working
