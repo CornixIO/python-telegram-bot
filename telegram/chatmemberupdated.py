@@ -107,12 +107,12 @@ class ChatMemberUpdated(TelegramObject):
         self,
         chat: Chat,
         from_user: User,
-        # date: datetime.datetime,
-        # old_chat_member: ChatMember,
-        # new_chat_member: ChatMember,
-        # invite_link=None,
-        # via_chat_folder_invite_link=None,
-        # via_join_request=None,
+        date: datetime.datetime,
+        old_chat_member: ChatMember,
+        new_chat_member: ChatMember,
+        invite_link=None,
+        via_chat_folder_invite_link=None,
+        via_join_request=None,
         *,
         bot=None
     ):
@@ -120,10 +120,10 @@ class ChatMemberUpdated(TelegramObject):
         # Required
         self.chat = chat
         self.from_user = from_user
-        # self.date = date
-        # self.old_chat_member = old_chat_member
-        # self.new_chat_member = new_chat_member
-        # self.via_chat_folder_invite_link = via_chat_folder_invite_link
+        self.date = date
+        self.old_chat_member = old_chat_member
+        self.new_chat_member = new_chat_member
+        self.via_chat_folder_invite_link = via_chat_folder_invite_link
 
         # Optionals
         # self.invite_link = invite_link
