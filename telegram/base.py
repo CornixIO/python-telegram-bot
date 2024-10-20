@@ -79,6 +79,14 @@ class TelegramObject(object):
             data['from'] = data.pop('from_user', None)
         return data
 
+    @staticmethod
+    def parse_data(data):
+        """Should be called by subclasses that override de_json to ensure that the input
+        is not altered. Whoever calls de_json might still want to use the original input
+        for something else.
+        """
+        return None if data is None else data.copy()
+
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self._id_attrs == other._id_attrs
