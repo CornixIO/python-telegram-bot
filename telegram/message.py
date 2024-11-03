@@ -257,6 +257,7 @@ class Message(TelegramObject):
                  connected_website=None,
                  animation=None,
                  passport_data=None,
+                 my_chat_member=None,
                  bot=None,
                  **kwargs):
         # Required
@@ -305,6 +306,7 @@ class Message(TelegramObject):
         self.media_group_id = media_group_id
         self.animation = animation
         self.passport_data = passport_data
+        self.my_chat_member = my_chat_member
 
         self.bot = bot
 
