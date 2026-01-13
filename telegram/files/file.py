@@ -19,7 +19,7 @@
 """This module contains an object that represents a Telegram File."""
 from os.path import basename
 
-from future.backports.urllib import parse as urllib_parse
+from urllib import parse as urllib_parse
 
 from telegram import TelegramObject
 from telegram.passport.credentials import decrypt
